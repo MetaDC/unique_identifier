@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:flutter/services.dart';
 import 'package:unique_identifier/unique_identifier.dart';
 
-void main() => runApp(new MyApp());
+void main() {
+  print("main1========");
+  runApp(new MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
@@ -16,11 +18,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    print("object1=============");
     super.initState();
     initUniqueIdentifierState();
+    print("object4=============");
   }
 
   Future<void> initUniqueIdentifierState() async {
+    print("object2=============");
+
     String identifier;
     try {
       identifier = (await UniqueIdentifier.serial)!;
@@ -33,10 +39,13 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _identifier = identifier;
     });
+    print("object3=============");
   }
 
   @override
   Widget build(BuildContext context) {
+    print("object5=============");
+
     return new MaterialApp(
       home: new Scaffold(
         appBar: new AppBar(
